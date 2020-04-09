@@ -84,6 +84,10 @@ public class Colocviu1_245MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+    }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -99,7 +103,6 @@ public class Colocviu1_245MainActivity extends AppCompatActivity {
             sum = savedInstanceState.getInt("suma");
         }
         Toast.makeText(this, "Sum is saved " + sum, Toast.LENGTH_LONG).show();
-
 
     }
 }
