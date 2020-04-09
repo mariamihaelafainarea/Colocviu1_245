@@ -17,6 +17,7 @@ public class Colocviu1_245MainActivity extends AppCompatActivity {
     public EditText allTerms;
     public EditText nextTerms;
     public Button compute;
+    public int lastLength = -1;
     public int sum = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,8 @@ public class Colocviu1_245MainActivity extends AppCompatActivity {
         compute = findViewById(R.id.compute);
         compute.setOnClickListener(calculateClickListener);
         Log.d("ce naiba","aaa");
+
+
 
     }
 
@@ -69,9 +72,15 @@ public class Colocviu1_245MainActivity extends AppCompatActivity {
     private class CalculateClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext(),Colocviu1_245SecondaryActivity.class);
-            intent.putExtra("allterms",allTerms.getText().toString());
-            startActivityForResult(intent,1234);
+            if(allTerms.length() == lastLength && sum > 0) {
+                Toast.makeText(getApplicationContext(), "Sum is: " + sum, Toast.LENGTH_LONG).show();
+
+            }else {
+                lastLength = allTerms.length();
+                Intent intent = new Intent(getApplicationContext(), Colocviu1_245SecondaryActivity.class);
+                intent.putExtra("allterms", allTerms.getText().toString());
+                startActivityForResult(intent, 1234);
+            }
 
         }
     }
