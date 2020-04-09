@@ -17,6 +17,7 @@ public class Colocviu1_245MainActivity extends AppCompatActivity {
     public EditText allTerms;
     public EditText nextTerms;
     public Button compute;
+    public int sum = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,7 +79,27 @@ public class Colocviu1_245MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
+        sum = resultCode;
             Toast.makeText(this, "Activity returned with result " + resultCode, Toast.LENGTH_LONG).show();
+
+    }
+
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("suma", sum);
+
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState.containsKey("suma")) {
+            sum = savedInstanceState.getInt("suma");
+        }
+        Toast.makeText(this, "Sum is saved " + sum, Toast.LENGTH_LONG).show();
+
 
     }
 }
