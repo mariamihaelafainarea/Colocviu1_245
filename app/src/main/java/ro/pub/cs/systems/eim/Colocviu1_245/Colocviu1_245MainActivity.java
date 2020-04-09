@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +31,7 @@ public class Colocviu1_245MainActivity extends AppCompatActivity {
 
         compute = findViewById(R.id.compute);
         compute.setOnClickListener(calculateClickListener);
+        Log.d("ce naiba","aaa");
 
     }
 
@@ -66,20 +68,17 @@ public class Colocviu1_245MainActivity extends AppCompatActivity {
     private class CalculateClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(Colocviu1_245MainActivity.this,Colocviu1_245SecondaryActivity.class);
+            Intent intent = new Intent(getApplicationContext(),Colocviu1_245SecondaryActivity.class);
             intent.putExtra("allterms",allTerms.getText().toString());
             startActivityForResult(intent,1234);
+
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode,resultCode,data);
-        switch(requestCode) {
-            case(1234):
+            Toast.makeText(this, "Activity returned with result " + resultCode, Toast.LENGTH_LONG).show();
 
-                Toast.makeText(this, "Activity returned with result " + resultCode, Toast.LENGTH_LONG).show();
-
-        }
     }
 }
